@@ -15,11 +15,11 @@
                 <table>
                     <tr>
                         <th>Script creación BD</th>
-                        <th>Script creación BD</th>
-                        <th>Script creación BD</th>
+                        <th>Script carga BD</th>
+                        <th>Script borrado BD</th>
                     </tr>
                     <tr>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href="mostrarcodigo/muestraScriptCreaBD.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""><img src="doc/show.png" alt="show"></a></td>
                     </tr>
