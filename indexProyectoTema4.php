@@ -14,12 +14,22 @@
             <nav>
                 <table>
                     <tr>
-                        <th>Script creación BD</th>
-                        <th>Script carga BD</th>
-                        <th>Script borrado BD</th>
+                        <th></th>
+                        <th>Entorno de Desarrollo</th>
+                        <th>Entorno de Explotación</th>
                     </tr>
                     <tr>
+                        <td><a>Script creación BD</a></td>
                         <td><a href="mostrarcodigo/muestraScriptCreaBD.php"><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                    </tr>
+                    <tr>
+                        <td><a>Script carga BD</a></td>
+                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>                   
+                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                    </tr>
+                    <tr>
+                        <td><a>Script borrado BD</a></td>
                         <td><a href=""><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""><img src="doc/show.png" alt="show"></a></td>
                     </tr>
@@ -44,39 +54,39 @@
                     <tr>
                         <td>2</td>
                         <td>Mostrar el contenido de la tabla Departamento y el número de registros</td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
                         control de errores.</td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Formulario de búsqueda de departamentos por descripción (por una parte del campo
                         DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos).
                         </td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones
                         insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.
                         </td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>6</td>
@@ -84,20 +94,20 @@
                         utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los
                         ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind,
                         pasando los parámetros en un array a execute. </td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>7</td>
                         <td>Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
                         Departamento de nuestra base de datos. (IMPORTAR). El fichero importado se encuentra en el
                         directorio .../tmp/ del servidor</td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>8</td>
@@ -105,27 +115,27 @@
                         fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). El fichero exportado se
                         encuentra en el directorio .../tmp/ del servidor.
                         </td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>9</td>
                         <td>Aplicación resumen MtoDeDepartamentosTema4. (Incluir PHPDoc y versionado en el repositorio
                         GIT)</td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>10</td>
                         <td>Aplicación resumen MtoDeDepartamentos POO y multicapa.</td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                 </table>
             </nav>       
