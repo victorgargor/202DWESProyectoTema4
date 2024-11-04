@@ -8,19 +8,19 @@
     </head>
     <body>
         <header>      
-            <h1 id="inicio">Script Creación BD</h1>
+            <h1 id="inicio">Script Borrado DB</h1>
         </header>
         <main>
              <section>
                 <?php
-                highlight_file("../scriptDB/CreaBD202DWESProyectoTema4.sql");
+                highlight_file("../scriptDB/BorraDB202DWESProyectoTema4.sql");
                 ?>
             </section>  
         </main>
         <footer>
             <div>
                 <a href="/index.html">Víctor García Gordón</a>
-                <a href="../indexProyectoTema3.php">Tema 3</a>
+                <a href="../indexProyectoTema4.php">Tema 4</a>
             </div>
         </footer>
     </body>

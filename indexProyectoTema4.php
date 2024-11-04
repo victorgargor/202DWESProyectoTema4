@@ -20,18 +20,18 @@
                     </tr>
                     <tr>
                         <td><a>Script creación BD</a></td>
-                        <td><a href="mostrarcodigo/muestraScriptCreaBD.php"><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href="mostrarcodigo/muestraScriptCreaDB.php"><img src="doc/show.png" alt="show"></a></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td><a>Script carga BD</a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>                   
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href="mostrarcodigo/muestraScriptCargaInicialDB.php"><img src="doc/show.png" alt="show"></a></td>                   
+                        <td></td>
                     </tr>
                     <tr>
                         <td><a>Script borrado BD</a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href="mostrarcodigo/muestraScriptBorraDB.php"><img src="doc/show.png" alt="show"></a></td>
+                        <td></td>
                     </tr>
                 </table>
                 <br>
@@ -46,16 +46,16 @@
                         <td>1</td>
                         <td>Conexión a la base de datos con la cuenta usuario y tratamiento de errores.
                         Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.</td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href="codigoPHP/ejercicio01.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio01.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""><img src="doc/play.png" alt="play"></a></td>
                         <td><a href=""><img src="doc/show.png" alt="show"></a></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Mostrar el contenido de la tabla Departamento y el número de registros</td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="mostrarcodigo/muestraScriptCreaBD.php"></a></td>
+                        <td><a href="mostrarcodigo/muestraScriptCreaBD.php"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>
