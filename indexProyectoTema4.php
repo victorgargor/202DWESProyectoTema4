@@ -46,16 +46,16 @@
                         <td>1</td>
                         <td>Conexión a la base de datos con la cuenta usuario y tratamiento de errores.
                         Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.</td>
-                        <td><a href="codigoPHP/ejercicio01.php"><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href="mostrarcodigo/muestraEjercicio01.php"><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""><img src="doc/play.png" alt="play"></a></td>
-                        <td><a href=""><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href="codigoPHP/ejercicio01PDO.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio01PDO.php"><img src="doc/show.png" alt="show"></a></td>
+                        <td><a href=""></a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Mostrar el contenido de la tabla Departamento y el número de registros</td>
-                        <td><a href="mostrarcodigo/muestraScriptCreaBD.php"></a></td>
-                        <td><a href="mostrarcodigo/muestraScriptCreaBD.php"></a></td>
+                        <td><a href="codigoPHP/ejercicio02PDO.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio02PDO.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>
@@ -146,6 +146,7 @@
                 <a href="/202DWESProyectoDWES/indexProyectoDWES.php">DWES</a>
                 <a target="blank" href="doc/curriculum.pdf"><img src="doc/curriculum.jpg" alt="curriculum"></a>
                 <a target="blank" href="https://github.com/victorgargor/202DWESProyectoTema4"><img src="doc/github.png" alt="github"></a>
+                <a target="blank" href="https://github.com">Web Imitada</a>
             </div>
         </footer>
     </body>

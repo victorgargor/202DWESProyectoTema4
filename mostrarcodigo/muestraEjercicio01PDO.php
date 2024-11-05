@@ -14,7 +14,7 @@
         <main>
             <section>
                 <?php
-                highlight_file("../codigoPHP/ejercicio01.php");
+                highlight_file("../codigoPHP/ejercicio01PDO.php");
                 ?>
             </section>       
         </main>

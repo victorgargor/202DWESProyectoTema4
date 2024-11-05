@@ -13,7 +13,7 @@
         <main>
             <section>
                 <?php
-                highlight_file("../codigoPHP/ejercicio02.php");
+                highlight_file("../codigoPHP/ejercicio02PDO.php");
                 ?>
             </section>       
         </main>
