@@ -8,14 +8,14 @@
     </head>
     <body>
         <header>      
-            <h1 id="inicio">Script Creación DB</h1>
+            <h1 id="inicio">Fichero Configuración DB PDO</h1>
         </header>
         <main>
-             <section>
+            <section>
                 <?php
-                highlight_file("../scriptDB/CreaDB202DWESProyectoTema4.sql");
+                highlight_file("../config/ConfDBPDO.php");
                 ?>
-            </section>  
+            </section>       
         </main>
         <footer>
             <div>
