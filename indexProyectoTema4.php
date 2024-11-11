@@ -34,6 +34,19 @@
                         <td></td>
                     </tr>
                 </table>
+                <table>
+                    <tr>
+                        <th colspan="2">Ficheros de configuración de la DB</th>                   
+                    </tr>
+                    <tr>
+                        <td><a>PDO</a></td>
+                        <td><a href="mostrarcodigo/muestraConfDBPDO.php"><img src="doc/show.png" alt="show"></a></td>      
+                    </tr>
+                    <tr>
+                        <td><a>mysqli</a></td>
+                        <td><a href="mostrarcodigo/muestraConfDBMYSQLI.php"><img src="doc/show.png" alt="show"></a></td>      
+                    </tr>
+                </table>
                 <br>
                 <table>
                     <tr>
@@ -63,8 +76,8 @@
                         <td>3</td>
                         <td>Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
                         control de errores.</td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="codigoPHP/ejercicio03PDO.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio03PDO.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>
