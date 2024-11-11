@@ -86,8 +86,8 @@
                         <td>Formulario de búsqueda de departamentos por descripción (por una parte del campo
                         DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos).
                         </td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="codigoPHP/ejercicio04PDO.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio04PDO.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>

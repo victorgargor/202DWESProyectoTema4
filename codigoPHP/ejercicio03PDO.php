@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../webroot/css/index.css" type="text/css">
+        <link rel="stylesheet" href="../webroot/css/formularios.css" type="text/css">
         <title>Víctor García Gordón</title>
     </head>
     <body>
@@ -15,7 +15,7 @@
                 <?php
                 /**
                  * @author Víctor García Gordón
-                 * @version Fecha de última modificación 06/11/2024
+                 * @version Fecha de última modificación 11/11/2024
                  */
                 //Importamos la configuracion de la base de datos
                 require_once '../config/ConfDBPDO.php';
@@ -63,8 +63,7 @@
                 // Ahora validamos que el codigo introducido no exista en la BD, haciendo una consulta 
                 if ($aErrores['T02_CodDepartamento'] == null) {
                     try {
-                        $miDB = new PDO(DSN, USER, PASSWORD); //Establecemos la conexión con la base de datos             
-                        $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Configuro las excepciones               
+                        $miDB = new PDO(DSN, USER, PASSWORD); //Establecemos la conexión con la base de datos                          
                         $codDepartamento = $miDB->quote($_REQUEST['T02_CodDepartamento']); //Elimino los caracteres especiales y coloca comillas alrededor si es necesario con el quote
                         //Se guarda el query de consulta en una variable
                         $resultadoConsulta = $miDB->query("SELECT T02_CodDepartamento FROM T02_Departamento WHERE T02_CodDepartamento = $codDepartamento");
@@ -96,7 +95,6 @@
                 if ($entradaOK) {
                 try {
                     $miDB = new PDO(DSN, USER, PASSWORD); //Establecemos la conexión con la base de datos             
-                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Configuro las excepciones  
                     // Cargo el array con las respuestas
                     $aRespuestas['T02_CodDepartamento'] = strtoupper($_REQUEST['T02_CodDepartamento']);
                     $aRespuestas['T02_DescDepartamento'] = $_REQUEST['T02_DescDepartamento'];
