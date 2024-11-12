@@ -56,7 +56,7 @@
                     if (isset($_REQUEST['buscar']) && $entradaOK) {
                         $descDepartamento = "%" . $_REQUEST['T02_DescDepartamento'] . "%";
                         $consulta = $miDB->prepare("SELECT * FROM T02_Departamento WHERE T02_DescDepartamento LIKE :descDepartamento");
-                        $consulta->bindParam(':descDepartamento', $descDepartamento, PDO::PARAM_STR);
+                        $consulta->bindParam(':descDepartamento', $descDepartamento);
                     } else {
                         // Si no hay búsqueda, mostramos todos los departamentos
                         $consulta = $miDB->query("SELECT * FROM T02_Departamento");
@@ -82,7 +82,7 @@
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" novalidate>
                     <div class="form-group">
                         <label for="T02_DescDepartamento">Descripción de Departamento (parte del nombre):</label>
-                        <input type="text" id="T02_DescDepartamento" name="T02_DescDepartamento" style="background-color: lightyellow" value="<?php echo (isset($_REQUEST['T02_DescDepartamento']) ? $_REQUEST['T02_DescDepartamento'] : ''); ?>">
+                        <input type="text" id="T02_DescDepartamento" name="T02_DescDepartamento" style="background-color: white" value="<?php echo (isset($_REQUEST['T02_DescDepartamento']) ? $_REQUEST['T02_DescDepartamento'] : ''); ?>">
                         <?php if (!empty($aErrores['T02_DescDepartamento'])) { ?>
                             <span style="color: red"><?php echo $aErrores['T02_DescDepartamento']; ?></span>
                         <?php } ?>

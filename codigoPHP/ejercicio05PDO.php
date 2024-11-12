@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1 id="inicio">Formulario para agregar departamentos con transacción</h1>
+        <h1 id="inicio">Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno</h1>
     </header>
     <main>
         <section>
@@ -16,6 +16,9 @@
             /**
              * Página que agrega tres registros en la tabla Departamento usando transacciones al presionar el botón.
              */
+                
+                // Importamos la configuración de la base de datos
+                require_once '../config/ConfDBPDO.php';
 
                 // Definir los tres registros a insertar
                 $departamentos = [
@@ -25,12 +28,8 @@
                 ];
 
                 try {
-                    // Importamos la configuración de la base de datos
-                    require_once '../config/ConfDBPDO.php';
-
                     // Establecemos la conexión con la base de datos
                     $miDB = new PDO(DSN, USER, PASSWORD);
-                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     // Iniciamos la transacción
                     $miDB->beginTransaction();
@@ -40,10 +39,10 @@
                         $consulta = $miDB->prepare("INSERT INTO T02_Departamento (T02_CodDepartamento, T02_DescDepartamento, T02_FechaCreacionDepartamento, T02_VolumenDeNegocio) 
                         VALUES (:codDepartamento, :descDepartamento, :fechaCreacion, :volumenDeNegocio)");
 
-                        $consulta->bindParam(':codDepartamento', $departamento['T02_CodDepartamento'], PDO::PARAM_STR);
-                        $consulta->bindParam(':descDepartamento', $departamento['T02_DescDepartamento'], PDO::PARAM_STR);
-                        $consulta->bindParam(':fechaCreacion', $departamento['T02_FechaCreacionDepartamento'], PDO::PARAM_STR);
-                        $consulta->bindParam(':volumenDeNegocio', $departamento['T02_VolumenDeNegocio'], PDO::PARAM_INT);
+                        $consulta->bindParam(':codDepartamento', $departamento['T02_CodDepartamento']);
+                        $consulta->bindParam(':descDepartamento', $departamento['T02_DescDepartamento']);
+                        $consulta->bindParam(':fechaCreacion', $departamento['T02_FechaCreacionDepartamento']);
+                        $consulta->bindParam(':volumenDeNegocio', $departamento['T02_VolumenDeNegocio']);
 
                         // Ejecutamos la consulta de inserción
                         $consulta->execute();
@@ -56,7 +55,10 @@
                 } catch (PDOException $excepcion) {
                     // Si hay un error, deshacemos la transacción
                     $miDB->rollBack();
-                    echo "<p>Error: " . $excepcion->getMessage() . "</p>";
+                    echo 'Error: ' . $excepcion->getMessage() . "<br>";
+                    echo 'Código de error: ' . $excepcion->getCode() . "<br>";
+                    echo "<p>No se ha agregado ningún departamento. </p>";
+                    //echo "<p>Error: " . $excepcion->getMessage() . "</p>";
                 }
                 finally {
                     unset($miDB); // Cerramos la conexión
@@ -64,11 +66,8 @@
 
             // Mostrar los departamentos existentes
             try {
-                // Importamos la configuración de la base de datos
-                require_once '../config/ConfDBPDO.php';
                 // Establecemos la conexión con la base de datos
                 $miDB = new PDO(DSN, USER, PASSWORD);
-                $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // Consultar todos los departamentos
                 $consulta = $miDB->query("SELECT * FROM T02_Departamento");
@@ -89,7 +88,7 @@
                         echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
                         echo "<td>" . date_format(new DateTime($oDepartamento->T02_FechaCreacionDepartamento), 'd/m/Y') . "</td>";
                         echo "<td>" . $oDepartamento->T02_VolumenDeNegocio . "</td>";
-                        echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : 'N/A') . "</td>";
+                        echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : '') . "</td>";
                         echo "</tr>";
                     }
 
@@ -106,7 +105,6 @@
             ?>
         </section>
     </main>
-
     <footer>
         <div>
             <a href="../indexProyectoTema4.php">Tema 4</a> 

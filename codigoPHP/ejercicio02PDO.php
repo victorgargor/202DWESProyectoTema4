@@ -45,8 +45,8 @@
                     $fechaBaja = $oDepartamento->T02_FechaBajaDepartamento;
 
                     // Usamos strtotime y date para formatear las fechas
-                    $fechaCreacionFormateada = $fechaCreacion ? date('d/m/Y', strtotime($fechaCreacion)) : 'N/A';
-                    $fechaBajaFormateada = $fechaBaja ? date('d/m/Y', strtotime($fechaBaja)) : 'N/A';
+                    $fechaCreacionFormateada = $fechaCreacion ? date('d/m/Y', strtotime($fechaCreacion)) : '';
+                    $fechaBajaFormateada = $fechaBaja ? date('d/m/Y', strtotime($fechaBaja)) : '';
 
                     // Mostrar los datos de la tabla
                     echo '<tr>';
