@@ -15,39 +15,47 @@
             <?php
             /**
              * @author Víctor García Gordón
-             * @version Fecha de última modificación 06/11/2024
+             * @version Fecha de última modificación 12/11/2024
              */
             
-             //Importamos la configuracion de la base de datos
+            // Importamos la configuración de la base de datos
             require_once '../config/ConfDBPDO.php';
             
             try {                                                   
-                $miDB = new PDO(DSN, USER, PASSWORD);//Establecemos la conexión con los datos correctos
+                $miDB = new PDO(DSN, USER, PASSWORD); // Establecemos la conexión con los datos correctos
                 
-                //Se guarda el query de consulta en una variable
-                $resultadoConsulta = $miDB -> query('SELECT * FROM T02_Departamento');
+                // Se guarda el query de consulta en una variable
+                $resultadoConsulta = $miDB->query('SELECT * FROM T02_Departamento');
                 ?>
                 <table>
                     <thead>
                         <tr>
-                            <th>Codigo</th>
-                            <th>Descripcion</th>
+                            <th>Código</th>
+                            <th>Descripción</th>
                             <th>Fecha Alta</th>
                             <th>Volumen Negocio</th>
                             <th>Fecha Baja</th>
                         </tr>
                     </thead>
                 <?php
-                /*Asignamos a la variable oDepartamento el 1er resultado de las respuestas recibidas del query, mientras el objeto contenga valores, se ejecutara el bucle
-                y se recorre el objeto mostrando el nombre del campo y su valor*/
-                while ($oDepartamento=$resultadoConsulta->fetchObject()){                
+                // Asignamos a la variable oDepartamento el 1er resultado de las respuestas recibidas del query
+                while ($oDepartamento = $resultadoConsulta->fetchObject()) {
+                    // Formateamos las fechas
+                    $fechaCreacion = $oDepartamento->T02_FechaCreacionDepartamento;
+                    $fechaBaja = $oDepartamento->T02_FechaBajaDepartamento;
+
+                    // Usamos strtotime y date para formatear las fechas
+                    $fechaCreacionFormateada = $fechaCreacion ? date('d/m/Y', strtotime($fechaCreacion)) : 'N/A';
+                    $fechaBajaFormateada = $fechaBaja ? date('d/m/Y', strtotime($fechaBaja)) : 'N/A';
+
+                    // Mostrar los datos de la tabla
                     echo '<tr>';
                     echo "<td>" . $oDepartamento->T02_CodDepartamento . "</td>";
                     echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
-                    echo "<td>" . $oDepartamento->T02_FechaCreacionDepartamento . "</td>";
+                    echo "<td>" . $fechaCreacionFormateada . "</td>";
                     echo "<td>" . $oDepartamento->T02_VolumenDeNegocio . "</td>";
-                    echo "<td>" . $oDepartamento->T02_FechaBajaDepartamento . "</td>";
-                    echo '</tr>';                                                          
+                    echo "<td>" . $fechaBajaFormateada . "</td>";
+                    echo '</tr>';
                 }
                 ?>
                 </table>
@@ -56,7 +64,7 @@
                 echo 'Error: ' . $excepcion->getMessage() . "<br>";
                 echo 'Código de error: ' . $excepcion->getCode() . "<br>";
             } finally {
-                unset($miDB);//Cerramos la base de datos
+                unset($miDB); // Cerramos la base de datos
             }          
             ?>
         </section>
@@ -71,4 +79,5 @@
     </footer>
 </body>
 </html>
+
 

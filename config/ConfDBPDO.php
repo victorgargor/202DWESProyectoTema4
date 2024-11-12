@@ -2,7 +2,7 @@
 /**
  * Fichero de configuración para la conexión a la BD 
  * @author Víctor García Gordón
- * @version Fecha de última modificación 04/11/2024
+ * @version Fecha de última modificación 12/11/2024
  */
 
 //Conexión DB Entorno Desarrollo

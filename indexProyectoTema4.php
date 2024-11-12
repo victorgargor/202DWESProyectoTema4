@@ -61,16 +61,16 @@
                         Utilizar excepciones automáticas siempre que sea posible en todos los ejercicios.</td>
                         <td><a href="codigoPHP/ejercicio01PDO.php"><img src="doc/play.png" alt="play"></a></td>
                         <td><a href="mostrarcodigo/muestraEjercicio01PDO.php"><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="codigoPHP/ejercicio01MYSQLI.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio01MYSQLI.php"><img src="doc/show.png" alt="show"></a></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Mostrar el contenido de la tabla Departamento y el número de registros</td>
                         <td><a href="codigoPHP/ejercicio02PDO.php"><img src="doc/play.png" alt="play"></a></td>
                         <td><a href="mostrarcodigo/muestraEjercicio02PDO.php"><img src="doc/show.png" alt="show"></a></td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="codigoPHP/ejercicio02MYSQLI.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio02MYSQLI.php"><img src="doc/show.png" alt="show"></a></td>
                     </tr>
                     <tr>
                         <td>3</td>
@@ -96,8 +96,8 @@
                         <td>Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones
                         insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.
                         </td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="codigoPHP/ejercicio05PDO.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio05PDO.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>
@@ -107,8 +107,8 @@
                         utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los
                         ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind,
                         pasando los parámetros en un array a execute. </td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td></td>
+                        <td></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>

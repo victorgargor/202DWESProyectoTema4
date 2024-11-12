@@ -9,8 +9,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow: hidden;
 }
 
+/* Header */
 header {
     background-color: #24292f;
     padding: 20px;
@@ -25,20 +27,24 @@ header h1 {
 
 /* Contenedor principal */
 main {
-    padding: 20px;
-    flex: 1;
-    overflow: hidden; /* Oculta cualquier scroll del main */
+    padding: 10px; /* Reducido el padding para hacer el main más pequeño */
+    flex: 0 1 auto; /* Cambiado para no permitir que crezca tanto */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px; /* Ajustado para dejar menos espacio entre el main y el footer */
+    max-height: 80vh; /* Limita la altura máxima del main */
+    overflow-y: auto; /* Añadido para permitir desplazamiento si el contenido excede el alto */
 }
 
 /* Formularios */
 form {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 15px; /* Reducido el padding del formulario */
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px; /* Reducido el espacio entre los campos del formulario */
     max-width: 500px;
     margin: 0 auto;
 }
@@ -53,7 +59,7 @@ label {
 
 input, select, textarea {
     width: 100%;
-    padding: 12px;
+    padding: 10px; /* Reducido el padding de los campos */
     font-size: 16px;
     border: 1px solid #e1e4e8;
     border-radius: 4px;
@@ -70,7 +76,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Botones */
 button {
-    padding: 12px;
+    padding: 10px; /* Reducido el padding de los botones */
     background-color: #0366d6;
     color: #ffffff;
     font-size: 16px;
@@ -78,6 +84,8 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: block; /* Asegura que el botón sea un bloque */
+    margin: 20px auto; /* Centrado del botón y margen superior e inferior */
 }
 
 button:hover {
@@ -104,15 +112,46 @@ small {
     gap: 10px;
 }
 
-/* Estilos adicionales para el footer */
+/* Tabla */
+.table-container {
+    overflow: auto;
+    max-height: 300px; /* Reducido el alto máximo de la tabla */
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 8px; /* Reducido el padding de las celdas */
+    text-align: center;
+    border: 1px solid #e1e4e8;
+}
+
+th {
+    background-color: #f6f8fa;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f6f8fa;
+}
+
+/* Estilos para el footer */
 footer {
     background-color: #24292f;
     padding: 20px;
     text-align: center;
     color: #ffffff;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
+    left: 0;
+    z-index: 10; /* Asegura que el footer esté por encima de cualquier otro contenido */
 }
 
 footer a {
@@ -152,3 +191,4 @@ footer img {
         padding: 10px;
     }
 }
+

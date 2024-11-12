@@ -15,27 +15,23 @@
                 <?php
                 /**
                  * @author Víctor García Gordón
-                 * @version Fecha de última modificación 11/11/2024
+                 * @version Fecha de última modificación 12/11/2024
                  */
-                //Importamos la configuracion de la base de datos
+                // Importamos la configuración de la base de datos
                 require_once '../config/ConfDBPDO.php';
-                //Incluimos la libreria de validación de formularios
+                // Incluimos la librería de validación de formularios
                 require_once '../core/231018libreriaValidacion.php';
 
-                 //Definición de constantes que utilizaremos en prácticamente todos los métodos de la librería
+                // Definición de constantes
                 define('OBLIGATORIO', 1);
                 define('OPCIONAL', 0);
-                //Definición de constantes para comprobarAlfabético
-                define('T_MAX_ALFABETICO', 3);
-                define('T_MIN_ALFABETICO', 3);
-                //Definición de constantes para comprobarAlfaNumérico
                 define('T_MAX_ALFANUMERICO', 255);
                 define('T_MIN_ALFANUMERICO', 1);
                 
-                //Inicialización de variables
-                $entradaOK = true; //Variable que nos indica que todo va bien
-                $aErrores = ['T02_DescDepartamento' => '']; //Para almacenar los errores de validación
-                $aRespuestas = ['T02_DescDepartamento' => '']; //Respuestas correctas
+                // Inicialización de variables
+                $entradaOK = true; // Variable que nos indica que todo va bien
+                $aErrores = ['T02_DescDepartamento' => '']; // Para almacenar los errores de validación
+                $aRespuestas = ['T02_DescDepartamento' => '']; // Respuestas correctas
                 $departamentos = []; // Array para almacenar los resultados de la búsqueda
 
                 // Verifica si el formulario ha sido enviado
@@ -50,47 +46,35 @@
                             $_REQUEST[$clave] = ''; // Limpiamos el campo si hay un error
                         }
                     }
-
-                    // Si la entrada es correcta, realizamos la búsqueda
-                    if ($entradaOK) {
-                        try {
-                            $miDB = new PDO(DSN, USER, PASSWORD); // Establecemos la conexión con la base de datos
-
-                            // Construimos la consulta SQL de búsqueda
-                            $descDepartamento = $_REQUEST['T02_DescDepartamento'] ? "%" . $_REQUEST['T02_DescDepartamento'] . "%" : "%";
-                            $resultadoConsulta = $miDB->query("SELECT * FROM T02_Departamento WHERE T02_DescDepartamento LIKE '{$descDepartamento}'");
-
-                            // Recuperamos los departamentos que coinciden con la búsqueda
-                            while ($oDepartamento = $resultadoConsulta->fetchObject()) {
-                                $departamentos[] = $oDepartamento;
-                            }
-                        } catch (PDOException $excepcion) {
-                            echo 'Error: ' . $excepcion->getMessage() . "<br>";
-                            echo 'Código de error: ' . $excepcion->getCode() . "<br>";
-                        } finally {
-                            unset($miDB); // Cerramos la conexión
-                        }
-                    }
                 }
 
-                // Si hubo algún resultado, los mostramos en una tabla
-                if (count($departamentos) > 0) {
-                    echo "<h2>Resultados de la búsqueda:</h2>";
-                    echo "<table>";
-                    echo "<thead><tr><th>Codigo</th><th>Descripción</th><th>Fecha Alta</th><th>Volumen Negocio</th><th>Fecha Baja</th></tr></thead>";
-                    echo "<tbody>";
-                    foreach ($departamentos as $oDepartamento) {
-                        echo "<tr>";
-                        echo "<td>" . $oDepartamento->T02_CodDepartamento . "</td>";
-                        echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
-                        echo "<td>" . $oDepartamento->T02_FechaCreacionDepartamento . "</td>";
-                        echo "<td>" . $oDepartamento->T02_VolumenDeNegocio . "</td>";
-                        echo "<td>" . $oDepartamento->T02_FechaBajaDepartamento . "</td>";
-                        echo "</tr>";
+                // Conexión a la base de datos y consulta
+                try {
+                    $miDB = new PDO(DSN, USER, PASSWORD); // Establecemos la conexión con la base de datos
+                    
+                    // Si se realizó una búsqueda, filtramos por la descripción, de lo contrario, mostramos todos los departamentos
+                    if (isset($_REQUEST['buscar']) && $entradaOK) {
+                        $descDepartamento = "%" . $_REQUEST['T02_DescDepartamento'] . "%";
+                        $consulta = $miDB->prepare("SELECT * FROM T02_Departamento WHERE T02_DescDepartamento LIKE :descDepartamento");
+                        $consulta->bindParam(':descDepartamento', $descDepartamento, PDO::PARAM_STR);
+                    } else {
+                        // Si no hay búsqueda, mostramos todos los departamentos
+                        $consulta = $miDB->query("SELECT * FROM T02_Departamento");
                     }
-                    echo "</tbody></table>";
-                } elseif (isset($_REQUEST['buscar'])) {
-                    echo "<p>No se encontraron departamentos que coincidan con la búsqueda.</p>";
+
+                    // Ejecutamos la consulta
+                    $consulta->execute();
+
+                    // Recuperamos todos los departamentos
+                    while ($oDepartamento = $consulta->fetchObject()) {
+                        $departamentos[] = $oDepartamento;
+                    }
+
+                } catch (PDOException $excepcion) {
+                    echo 'Error: ' . $excepcion->getMessage() . "<br>";
+                    echo 'Código de error: ' . $excepcion->getCode() . "<br>";
+                } finally {
+                    unset($miDB); // Cerramos la conexión
                 }
 
                 // Formulario de búsqueda
@@ -107,6 +91,39 @@
                         <input id="buscar" name="buscar" type="submit" value="Buscar">
                     </div>
                 </form>
+
+                <!-- Mostrar los resultados de la búsqueda en la tabla -->
+                <h2>Resultados de la búsqueda:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th>Fecha Alta</th>
+                            <th>Volumen de Negocio</th>
+                            <th>Fecha Baja</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Mostrar todos los departamentos o solo los que coincidan con la búsqueda
+                        if (count($departamentos) > 0) {
+                            foreach ($departamentos as $oDepartamento) {
+                                echo "<tr>";
+                                echo "<td>" . $oDepartamento->T02_CodDepartamento . "</td>";
+                                echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
+                                echo "<td>" . date_format(new DateTime($oDepartamento->T02_FechaCreacionDepartamento), 'd/m/Y') . "</td>";
+                                echo "<td>" . $oDepartamento->T02_VolumenDeNegocio . "</td>";
+                                echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : 'N/A') . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            // Si no hay resultados, mostramos un mensaje
+                            echo "<tr><td colspan='5'>No se encontraron departamentos que coincidan con la búsqueda.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </section>
         </main>
         <footer>
@@ -119,4 +136,6 @@
         </footer>
     </body>
 </html>
+
+
 
