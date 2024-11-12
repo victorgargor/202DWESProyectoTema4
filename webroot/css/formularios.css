@@ -76,8 +76,9 @@ input:focus, select:focus, textarea:focus {
 
 /* Botones */
 button {
+    width: 100px;
     padding: 10px; /* Reducido el padding de los botones */
-    background-color: #0366d6;
+    background-color: blue;
     color: #ffffff;
     font-size: 16px;
     border: none;
@@ -137,8 +138,8 @@ th {
     font-weight: 600;
 }
 
-tr:nth-child(even) {
-    background-color: #f6f8fa;
+tr:nth-child(even) td {
+    background-color: #e0e0e0; 
 }
 
 /* Estilos para el footer */
@@ -190,5 +191,15 @@ footer img {
         font-size: 14px;
         padding: 10px;
     }
+}
+
+/* Fila con fecha activa (sin fecha de baja) */
+.fecha-activa {
+    color: #006400; /* Verde oscuro */
+}
+
+/* Fila con fecha de baja */
+.fecha-baja {
+    color: #8B0000; /* Rojo oscuro */
 }
 

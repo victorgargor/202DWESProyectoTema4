@@ -107,8 +107,8 @@
                         utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los
                         ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind,
                         pasando los parámetros en un array a execute. </td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="codigoPHP/ejercicio06PDO.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio06PDO.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>

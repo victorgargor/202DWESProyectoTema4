@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>      
-            <h1 id="inicio">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores</h1>
+            <h1 id="inicio">Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno</h1>
         </header>
         <main>
             <section>

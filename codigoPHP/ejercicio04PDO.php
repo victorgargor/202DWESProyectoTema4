@@ -5,6 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../webroot/css/formularios.css" type="text/css">
         <title>Búsqueda de Departamentos</title>
+        <style>
+            /* Regla interna para ajustar el ancho y la alineación del formulario */
+            .form-group {
+                display: flex; /* Utiliza flexbox para colocar el input y el botón en la misma línea */
+                align-items: center; /* Alinea verticalmente los elementos */
+            }
+
+            .form-group input {
+                width: 60%; /* El input ocupa el 80% del espacio disponible */
+                padding: 8px; /* Agrega un poco de espacio interno para el input */
+            }
+
+            .form-group button {
+                width: auto; /* El botón se ajusta automáticamente a su contenido */
+                margin-left: 50px; /* Añade un espacio entre el input y el botón */
+                padding: 8px 16px; /* Ajusta el padding para que el botón sea más grande */
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -81,14 +99,12 @@
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" novalidate>
                     <div class="form-group">
-                        <label for="T02_DescDepartamento">Descripción de Departamento (parte del nombre):</label>
+                        <label for="T02_DescDepartamento">Descripción de Departamento:</label>
                         <input type="text" id="T02_DescDepartamento" name="T02_DescDepartamento" style="background-color: white" value="<?php echo (isset($_REQUEST['T02_DescDepartamento']) ? $_REQUEST['T02_DescDepartamento'] : ''); ?>">
                         <?php if (!empty($aErrores['T02_DescDepartamento'])) { ?>
                             <span style="color: red"><?php echo $aErrores['T02_DescDepartamento']; ?></span>
                         <?php } ?>
-                    </div>
-                    <div class="form-group">
-                        <input id="buscar" name="buscar" type="submit" value="Buscar">
+                        <button id="buscar" name="buscar" type="submit">Buscar</button>
                     </div>
                 </form>
 
@@ -109,12 +125,20 @@
                         // Mostrar todos los departamentos o solo los que coincidan con la búsqueda
                         if (count($departamentos) > 0) {
                             foreach ($departamentos as $oDepartamento) {
-                                echo "<tr>";
+                                if (empty($oDepartamento->T02_FechaBajaDepartamento)) {
+                                        // Si no tiene fecha de baja, aplicamos la clase 'fecha-activa' (verde claro)
+                                        $claseFila = 'fecha-activa';
+                                    } else {
+                                        // Si tiene fecha de baja, aplicamos la clase 'fecha-baja' (rojo claro)
+                                        $claseFila = 'fecha-baja';
+                                    }
+
+                                echo '<tr class="' . $claseFila . '">';
                                 echo "<td>" . $oDepartamento->T02_CodDepartamento . "</td>";
                                 echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
                                 echo "<td>" . date_format(new DateTime($oDepartamento->T02_FechaCreacionDepartamento), 'd/m/Y') . "</td>";
-                                echo "<td>" . $oDepartamento->T02_VolumenDeNegocio . "</td>";
-                                echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : 'N/A') . "</td>";
+                                echo "<td>" . number_format($oDepartamento->T02_VolumenDeNegocio, 2, '.', '.') . " €</td>";
+                                echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : '') . "</td>";
                                 echo "</tr>";
                             }
                         } else {

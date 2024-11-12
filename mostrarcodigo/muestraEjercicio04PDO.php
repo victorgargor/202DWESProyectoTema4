@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>      
-            <h1 id="inicio">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores</h1>
+            <h1 id="inicio">Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos).</h1>
         </header>
         <main>
             <section>
