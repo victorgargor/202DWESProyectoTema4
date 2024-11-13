@@ -8,12 +8,13 @@
     </head>
     <body>
         <header>      
-            <h1 id="inicio">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores</h1>
+            <h1 id="inicio">Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). 
+                El fichero exportado se encuentra en el directorio .../tmp/ del servidor.</h1>
         </header>
         <main>
             <section>
                 <?php
-                highlight_file("../codigoPHP/ejercicio03MYSQLI.php");
+                highlight_file("../codigoPHP/ejercicio08XML.php");
                 ?>
             </section>       
         </main>

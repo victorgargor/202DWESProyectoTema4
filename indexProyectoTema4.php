@@ -128,8 +128,8 @@
                         fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). El fichero exportado se
                         encuentra en el directorio .../tmp/ del servidor.
                         </td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="codigoPHP/ejercicio08XML.php"><img src="doc/play.png" alt="play"></a></td>
+                        <td><a href="mostrarcodigo/muestraEjercicio08XML.php"><img src="doc/show.png" alt="show"></a></td>
                         <td><a href=""></a></td>
                         <td><a href=""></a></td>
                     </tr>
