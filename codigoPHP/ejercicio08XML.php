@@ -20,7 +20,7 @@
     </head>
     <body>
         <header>
-            <h1>Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). 
+            <h1>Página web que toma datos de la tabla Departamento y guarda en un fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). 
                 El fichero exportado se encuentra en el directorio .../tmp/ del servidor.</h1>
         </header>
         <main>
@@ -28,7 +28,7 @@
                 <?php
                 /**
                  * @author Víctor García Gordón
-                 * @version Fecha de última modificación 13/11/2024
+                 * @version Fecha de última modificación 14/11/2024
                  */
                 try {
                     // Importamos la configuración de la base de datos
@@ -63,16 +63,19 @@
                             $departamento->addChild('FechaBajaDepartamento', $oDepartamento->T02_FechaBajaDepartamento);
                         }
                         
-                        //Variable que recoge la fecha actual y la formatea en formato año mes dia
-                        $oFechaActual = date('ymd');
+                        //Variable que recoge la fecha actual 
+                        $FechaActual = new DateTime();
+                        
+                        // Formatear la fecha en el formato año mes día (ymd)
+                        $FechaActual = $FechaActual->format('ymd');
                         
                         // Ruta y nombre del archivo donde se guardará el XML
-                        $RutaArchivo = '../tmp/'.$oFechaActual.'departamento.xml';
+                        $RutaArchivo = '../tmp/'.$FechaActual.'departamento.xml';
 
                         // Guardar el XML en el archivo
                         $xml->asXML($RutaArchivo);
 
-                        echo "<p class='mensaje-exito'>Los datos se han exportado correctamente a <a href='../tmp/'.$oFechaActual.'departamento.xml'>departamento.xml</a>.</p>";
+                        echo "<p class='mensaje-exito'>Los datos se han exportado correctamente a <a href='../tmp/{$FechaActual}departamento.xml'>departamento.xml</a>.</p>";
                     } else {
                         echo "<p>No hay departamentos para exportar.</p>";
                     }

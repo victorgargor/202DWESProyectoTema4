@@ -8,7 +8,7 @@
     </head>
     <body>
         <header>      
-            <h1 id="inicio">Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). 
+            <h1 id="inicio">Página web que toma datos de la tabla Departamento y guarda en un fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). 
                 El fichero exportado se encuentra en el directorio .../tmp/ del servidor.</h1>
         </header>
         <main>
