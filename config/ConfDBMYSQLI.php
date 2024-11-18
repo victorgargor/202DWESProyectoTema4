@@ -5,9 +5,15 @@
  * @version Fecha de última modificación 12/11/2024
  */
 
-//Conexión DB Entorno Desarrollo
+/*//Conexión DB Entorno Desarrollo
 //MYSQLI
 define('HOST', '192.168.20.19'); // Dirección IP del servidor MySQL 
 define('USER', 'user202DWESProyectoTema4');   // Usuario de la base de datos
 define('PASSWORD', 'paso');  // Contraseña del usuario de la base de datos
+define('DATABASE', 'DB202DWESProyectoTema4');  // Nombre de la base de datos*/
+
+//Casa
+define('HOST', '192.168.0.229'); // Dirección IP del servidor MySQL 
+define('USER', 'adminsql');   // Usuario de la base de datos
+define('PASSWORD', 'P@ssword');  // Contraseña del usuario de la base de datos
 define('DATABASE', 'DB202DWESProyectoTema4');  // Nombre de la base de datos
