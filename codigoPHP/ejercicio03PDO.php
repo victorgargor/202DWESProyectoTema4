@@ -64,6 +64,9 @@
 
                 // Verifica si el formulario ha sido enviado
                 if (isset($_REQUEST['enviar'])) {
+                    // Convertir a mayúsculas el código de departamento
+                    $_REQUEST['T02_CodDepartamento'] = strtoupper($_REQUEST['T02_CodDepartamento']);
+
                     // Para cada campo del formulario: Validar entrada y actuar en consecuencia
                     $aErrores['T02_CodDepartamento'] = validacionFormularios::comprobarAlfabetico($_REQUEST['T02_CodDepartamento'], T_MAX_ALFABETICO, T_MIN_ALFABETICO, OBLIGATORIO);
 
@@ -142,81 +145,78 @@
                 ?>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" novalidate>
                     <div class="form-group">
-                        <label for="T02_CodDepartamento">Código de Departamento:</label>
+                        <label for="T02_CodDepartamento">Código:</label>
                         <input type="text" id="T02_CodDepartamento" name="T02_CodDepartamento" style="background: lightyellow; width: 100px;" required value="<?php echo (isset($_REQUEST['T02_CodDepartamento']) ? $_REQUEST['T02_CodDepartamento'] : ''); ?>"><br/>
                         <?php if (!empty($aErrores['T02_CodDepartamento'])) { ?> 
                             <span style="color: red"><?php echo $aErrores['T02_CodDepartamento']; ?></span> 
                         <?php } ?>
                     </div>
                     <div class="form-group">
-                        <label for="T02_DescDepartamento">Descripción de Departamento:</label>
+                        <label for="T02_DescDepartamento">Descripción:</label>
                         <textarea id="T02_DescDepartamento" name="T02_DescDepartamento" rows="4" cols="50" style="background: lightyellow" required><?php echo (isset($_REQUEST['T02_DescDepartamento']) ? $_REQUEST['T02_DescDepartamento'] : ''); ?></textarea>
                         <?php if (!empty($aErrores['T02_DescDepartamento'])) { ?> 
                             <span style="color: red"><?php echo $aErrores['T02_DescDepartamento']; ?></span> 
                         <?php } ?>
                     </div>
                     <div class="form-group">
-                        <label for="T02_VolumenDeNegocio">Volumen de Negocio:</label>
-                        <input type="text" id="T02_VolumenDeNegocio" name="T02_VolumenDeNegocio" step="0.01" style="background: lightyellow; width: 100px;" required value="<?php echo (isset($_REQUEST['T02_VolumenDeNegocio']) ? $_REQUEST['T02_VolumenDeNegocio'] : ''); ?>"><br/>
+                        <label for="T02_VolumenDeNegocio">Volumen de negocio:</label>
+                        <input type="text" id="T02_VolumenDeNegocio" name="T02_VolumenDeNegocio" style="background: lightyellow; width: 100px;" required value="<?php echo (isset($_REQUEST['T02_VolumenDeNegocio']) ? $_REQUEST['T02_VolumenDeNegocio'] : ''); ?>"><br/>
                         <?php if (!empty($aErrores['T02_VolumenDeNegocio'])) { ?> 
                             <span style="color: red"><?php echo $aErrores['T02_VolumenDeNegocio']; ?></span> 
                         <?php } ?>
                     </div>
-                    <button type="submit" name="enviar">Enviar</button>
+                    <div class="form-group">
+                        <button type="submit" name="enviar">Añadir</button>
+                    </div>
                 </form>
 
                 <?php
+                // Mostrar la lista de departamentos si tiene resultados
                 try {
-                    $miDB = new PDO(DSN, USER, PASSWORD); // Establecemos la conexión con la base de datos
+                    $miDB = new PDO(DSN, USER, PASSWORD);
                     $consultaDatosDepartamento = $miDB->query("SELECT * FROM T02_Departamento");
 
-                    // Crear la tabla
-                    ?>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Codigo</th>
-                                    <th>Descripcion</th>
-                                    <th>Fecha Alta</th>
-                                    <th>Volumen Negocio</th>
-                                    <th>Fecha Baja</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                while ($oDepartamento = $consultaDatosDepartamento->fetchObject()) {
-                                    if (empty($oDepartamento->T02_FechaBajaDepartamento)) {
-                                        // Si no tiene fecha de baja, aplicamos la clase 'fecha-activa' (verde claro)
-                                        $claseFila = 'fecha-activa';
-                                    } else {
-                                        // Si tiene fecha de baja, aplicamos la clase 'fecha-baja' (rojo claro)
-                                        $claseFila = 'fecha-baja';
-                                    }
+                    if ($consultaDatosDepartamento->rowCount() > 0) {
+                        // Mostrar la tabla con los departamentos
+                        echo '<div class="table-container">';
+                        echo '<table>';
+                        echo '<thead>';
+                        echo '<tr>';
+                        echo '<th>Codigo</th>';
+                        echo '<th>Descripcion</th>';
+                        echo '<th>Fecha Alta</th>';
+                        echo '<th>Volumen Negocio</th>';
+                        echo '<th>Fecha Baja</th>';
+                        echo '</tr>';
+                        echo '</thead>';
+                        echo '<tbody>';
 
-                                    echo '<tr class="' . $claseFila . '">';
-                                    echo "<td>" . $oDepartamento->T02_CodDepartamento . "</td>";
-                                    echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
-                                    echo "<td>" . date_format(new DateTime($oDepartamento->T02_FechaCreacionDepartamento), 'd/m/Y') . "</td>";
-                                    echo "<td>" . number_format($oDepartamento->T02_VolumenDeNegocio, 2, '.', '.') . " €</td>";
-                                    echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : '') . "</td>";
-                                    echo '</tr>';
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <?php
-                } catch (PDOException $excepcion) {
-                    echo 'Error: ' . $excepcion->getMessage() . "<br>";
-                    echo 'Código de error: ' . $excepcion->getCode() . "<br>";
+                        // Usamos fetchObject para recorrer las filas
+                        while ($oDepartamento = $consultaDatosDepartamento->fetchObject()) {
+                            $claseFila = empty($oDepartamento->T02_FechaBajaDepartamento) ? 'fecha-activa' : 'fecha-baja';
+                            echo '<tr class="' . $claseFila . '">';
+                            echo "<td>" . $oDepartamento->T02_CodDepartamento . "</td>";
+                            echo "<td>" . $oDepartamento->T02_DescDepartamento . "</td>";
+                            echo "<td>" . date_format(new DateTime($oDepartamento->T02_FechaCreacionDepartamento), 'd/m/Y') . "</td>";
+                            echo "<td>" . number_format($oDepartamento->T02_VolumenDeNegocio, 2, '.', '.') . " €</td>";
+                            echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : '') . "</td>";
+                            echo '</tr>';
+                        }                    
+                        echo '</tbody>';
+                        echo '</table>';
+                        echo '</div>';
+                    } else {
+                        echo "<p>No se encontraron departamentos.</p>";
+                    }
+                } catch (PDOException $e) {
+                    echo 'Error: ' . $e->getMessage();
                 } finally {
-                    unset($miDB); // Para cerrar la conexión
+                    unset($miDB);
                 }
                 ?>
             </section>
         </main>
-        <footer>
+         <footer>
             <div>
                 <a href="../indexProyectoTema4.php">Tema 4</a> 
                 <a target="blank" href="../doc/curriculum.pdf"><img src="../doc/curriculum.jpg" alt="curriculum"></a>
@@ -226,5 +226,4 @@
         </footer>
     </body>
 </html>
-
 
