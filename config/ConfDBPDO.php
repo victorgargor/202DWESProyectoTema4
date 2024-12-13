@@ -5,13 +5,13 @@
  * @version Fecha de última modificación 12/11/2024
  */
 
-/*//Conexión DB Entorno Desarrollo
+//Conexión DB Entorno Desarrollo
 //PDO
 define("DSN", 'mysql:host=192.168.20.19;dbname=DB202DWESProyectoTema4');// IP del servidor y nombre de la base de datos
 define("USER", 'user202DWESProyectoTema4');// Usuario para conectarse
-define("PASSWORD", 'paso');// Contraseña para conectarse*/
+define("PASSWORD", 'paso');// Contraseña para conectarse
 
-//Casa
+/*//Casa
 define("DSN", 'mysql:host=192.168.0.229;dbname=DB202DWESProyectoTema4');// IP del servidor y nombre de la base de datos
 define("USER", 'adminsql');// Usuario para conectarse
-define("PASSWORD", 'P@ssword');// Contraseña para conectarse 
+define("PASSWORD", 'P@ssword');// Contraseña para conectarse*/

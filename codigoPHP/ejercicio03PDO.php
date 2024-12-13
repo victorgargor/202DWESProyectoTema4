@@ -74,10 +74,14 @@
                     if ($aErrores['T02_CodDepartamento'] == null) {
                         try {
                             $miDB = new PDO(DSN, USER, PASSWORD); // Establecemos la conexión con la base de datos
-                            $codDepartamento = $_REQUEST['T02_CodDepartamento']; // No es necesario el uso de quote en este caso con consultas preparadas
+                            // Definimos la consulta SQL usando la sintaxis Heredoc
+                            $sentencia = <<< SQL
+                                SELECT T02_CodDepartamento 
+                                FROM T02_Departamento 
+                                WHERE T02_CodDepartamento ={$_REQUEST['T02_CodDepartamento']}
+                             SQL;
                             // Consulta preparada para comprobar si el código ya existe
-                            $consultaCodigoExistente = $miDB->prepare("SELECT T02_CodDepartamento FROM T02_Departamento WHERE T02_CodDepartamento = :codDepartamento");
-                            $consultaCodigoExistente->bindParam(':codDepartamento', $codDepartamento);
+                            $consultaCodigoExistente = $miDB->prepare($sentencia);
                             $consultaCodigoExistente->execute();
 
                             // Comprobar si el código ya existe
@@ -201,7 +205,7 @@
                             echo "<td>" . number_format($oDepartamento->T02_VolumenDeNegocio, 2, '.', '.') . " €</td>";
                             echo "<td>" . ($oDepartamento->T02_FechaBajaDepartamento ? date_format(new DateTime($oDepartamento->T02_FechaBajaDepartamento), 'd/m/Y') : '') . "</td>";
                             echo '</tr>';
-                        }                    
+                        }
                         echo '</tbody>';
                         echo '</table>';
                         echo '</div>';
@@ -216,7 +220,7 @@
                 ?>
             </section>
         </main>
-         <footer>
+        <footer>
             <div>
                 <a href="../indexProyectoTema4.php">Tema 4</a> 
                 <a target="blank" href="../doc/curriculum.pdf"><img src="../doc/curriculum.jpg" alt="curriculum"></a>
